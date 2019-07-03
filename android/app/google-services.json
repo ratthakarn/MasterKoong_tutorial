@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "304684457177",
+    "firebase_url": "https://masterkoongtutorial.firebaseio.com",
+    "project_id": "masterkoongtutorial",
+    "storage_bucket": "masterkoongtutorial.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:304684457177:android:8414cd935aa890e4",
+        "android_client_info": {
+          "package_name": "th.co.gkrgroup.masterkoong_tutorial"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "304684457177-o4q7vh7dg85bvj0nrhe9gio9abotggum.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "th.co.gkrgroup.masterkoong_tutorial",
+            "certificate_hash": "3bee71f0f9558c693209d4b9de09fbf477e5bd79"
+          }
+        },
+        {
+          "client_id": "304684457177-g7382k7us13h7a7vl98ors1ej2di523a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQPgDqAPTbALF0LRNRQTobwo7DOing03Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "304684457177-g7382k7us13h7a7vl98ors1ej2di523a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
