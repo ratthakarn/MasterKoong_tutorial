@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:chewie/chewie.dart';
 import 'package:video_player/video_player.dart';
+import 'package:auto_orientation/auto_orientation.dart';
 
 class MyPlayVideo extends StatefulWidget {
   @override
@@ -20,6 +21,11 @@ class _MyPlayVideoState extends State<MyPlayVideo> {
     // TODO: implement initState
     super.initState();
 
+    //Set Orintation
+// AutoOrientation.landscapeRightMode();
+
+    
+
     // setup Video
     videoPlayerController = VideoPlayerController.network(urlVideo);
     chewieController = ChewieController(
@@ -34,6 +40,8 @@ class _MyPlayVideoState extends State<MyPlayVideo> {
     // TODO: implement dispose
     super.dispose();
     videoPlayerController.dispose();
+    chewieController.dispose();
+
   }
 
   @override
