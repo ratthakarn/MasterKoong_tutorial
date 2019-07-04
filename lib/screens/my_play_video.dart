@@ -4,13 +4,16 @@ import 'package:video_player/video_player.dart';
 import 'package:auto_orientation/auto_orientation.dart';
 
 class MyPlayVideo extends StatefulWidget {
+  final String urlVideoString;
+  MyPlayVideo({Key key, this.urlVideoString}) : super(key: key);
+
   @override
   _MyPlayVideoState createState() => _MyPlayVideoState();
 }
 
 class _MyPlayVideoState extends State<MyPlayVideo> {
 //Explicit
-  String urlVideo = 'https://www.androidthai.in.th/tae/Video/TestVideo.mp4';
+
   VideoPlayerController videoPlayerController;
   ChewieController chewieController;
 
@@ -24,24 +27,23 @@ class _MyPlayVideoState extends State<MyPlayVideo> {
     //Set Orintation
 // AutoOrientation.landscapeRightMode();
 
-    
-
     // setup Video
-    videoPlayerController = VideoPlayerController.network(urlVideo);
+    videoPlayerController =
+        VideoPlayerController.network(widget.urlVideoString);
     chewieController = ChewieController(
       videoPlayerController: videoPlayerController,
       aspectRatio: 3 / 2,
       autoPlay: true,
-      looping: true,
+      looping: false,
     );
   }
-@override
+
+  @override
   void dispose() {
     // TODO: implement dispose
     super.dispose();
     videoPlayerController.dispose();
     chewieController.dispose();
-
   }
 
   @override
@@ -50,8 +52,11 @@ class _MyPlayVideoState extends State<MyPlayVideo> {
       appBar: AppBar(
         title: Text('Play Video'),
       ),
-      body: Center(
-        child: Chewie(controller: chewieController,),
+      body: Container(
+        alignment: Alignment.topCenter, margin: EdgeInsets.all(20.0),
+        child: Chewie(
+          controller: chewieController,
+        ),
       ),
     );
   }
