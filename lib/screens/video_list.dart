@@ -2,6 +2,8 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:masterkoong_tutorial/listview/tutorial_listview.dart';
+import 'package:masterkoong_tutorial/models/tutorial_model.dart';
 
 class VideoList extends StatefulWidget {
   @override
@@ -13,6 +15,9 @@ class _VideoListState extends State<VideoList> {
   Firestore fireStore = Firestore.instance;
   StreamSubscription<QuerySnapshot> streamSubsriptions;
   List<DocumentSnapshot> lists;
+  List<TutorialModel> tutorialModels = [];
+
+  
 
 // Method
   @override
@@ -24,27 +29,31 @@ class _VideoListState extends State<VideoList> {
 
   Future<void> readFireStore() async {
     CollectionReference collectionReference = fireStore.collection('Tutorial');
-    streamSubsriptions = await collectionReference.snapshots().listen((dataSnapshot){
-
+    streamSubsriptions =
+        await collectionReference.snapshots().listen((dataSnapshot) {
       lists = dataSnapshot.documents;
 
-      for (var list in lists) {
-
+      setState(() {
+        for (var list in lists) {
         String nameVideo = list.data['NameVideo'];
-        print('nameVideo==> $nameVideo');
-        
+        String detailVideo = list.data['DetailVideo'];
+        String pathImage = list.data['PathImage'];
+        String pathVideo = list.data['PathVideo'];
+
+        TutorialModel tutorialModel =
+            TutorialModel(detailVideo, nameVideo, pathImage, pathVideo);
+
+        tutorialModels.add(tutorialModel);
       }
-
+      });
     });
-
-
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: Text('My Video')),
-      body: Text('body'),
+      body: TutorialListView(tutorialModels),
     );
   }
 }
